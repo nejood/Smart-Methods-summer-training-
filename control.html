@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+        <meta name="author" content="Nejood Alfashka">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>control</title>
+
+    <style type="text/css">
+
+        body{
+        background-color: #F8F3E6;
+        }
+
+        .divControl{
+        margin-top: 100px;
+        border-radius: 12px;
+        background-color: #CBC0B8;
+        max-height: 400px;
+        height: 400px;
+        max-width: 300px;
+        width: 300px;
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+        }
+
+        button{
+        color: #BC2C3D;
+        background-color: #EFD2BC;
+        border: 0.8px solid gray;
+        cursor: pointer;
+        transition-duration: 0.4s;  
+        font-size: 16px;
+        max-height: 80px;
+        height: 80px;
+        max-width: 90px;
+        width: 90px;
+        }
+
+        button:hover {
+        background-color: #F8F3E6;
+        color: #BC2C3D;
+        }
+
+        .stopButton{
+        background-color: #BC2C3D;
+        color: #EFD2BC;
+        border: 0.8px solid gray;
+        border-radius: 40%;
+        }
+
+        .stopButton:hover {
+        background-color: #e2a89c;
+        }
+
+        .forwardsButton{
+        margin-top: 70px;
+        border-bottom-left-radius: 18px;
+        border-bottom-right-radius: 18px;
+        border-top-left-radius: 40px;
+        border-top-right-radius: 40px;
+        }
+
+        .leftButton{
+        border-bottom-left-radius: 40px;
+        border-bottom-right-radius: 18px;
+        border-top-left-radius: 40px;
+        border-top-right-radius: 18px;
+        }
+
+        .rightButton{
+        border-bottom-left-radius: 18px;
+        border-bottom-right-radius: 40px;
+        border-top-left-radius: 18px;
+        border-top-right-radius: 40px;
+        }       
+
+        .backButton{
+        border-bottom-left-radius: 40px;
+        border-bottom-right-radius: 40px;
+        border-top-left-radius: 18px;
+        border-top-right-radius: 18px;
+        text-align: left;
+        }
+
+    </style>
+</head>
+
+<body>
+        <center>
+                <div class="divControl">
+                        <button class="forwardsButton" type="button">Forwards</button>
+                        <br>
+                        <br>
+                        <button class="leftButton" type="button">Left</button> 
+                        <button class="stopButton" type="button">STOP</button> 
+                        <button class="rightButton" type="button">Right</button>
+                        <br>
+                        <br>
+                        <button class="backButton" type="button">Backwards</button>
+                </div>
+        </center>
+</body>
+</html>
