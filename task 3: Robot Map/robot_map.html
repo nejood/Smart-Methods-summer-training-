@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Robot Map</title>
+    <style>
+canvas {
+    border:1px solid #d3d3d3;
+    background-color: #f1f1f1;
+}
+</style>
+  </head>
+
+
+
+  <body>
+
+  <canvas id="c" width="760" height="510"></canvas>
+    <form method="post" action="#" id="Myform">
+    <!-- the buttons-->
+         <div class="buttons_style">
+         <input type="submit" name="undo" id="undo" value="Undo" class="butn">
+         </div>
+        </form>
+
+  <script type="text/javascript">
+ctx = document.getElementById("c").getContext("2d");
+ctx.beginPath();
+//canvas_arrow(ctx, 0, 0, 365, 300);
+
+canvas_arrow(ctx, 760, 255, 0, 255);
+
+canvas_arrow(ctx, 160, 300, 160, 200);
+canvas_arrow(ctx, 160, 200, 400, 200);
+
+//ctx.stroke();
+
+
+function canvas_arrow(context, fromx, fromy, tox, toy) {
+  var headlen = 20; // length of head in pixels
+  var dx = tox - fromx;
+  var dy = toy - fromy;
+  var angle = Math.atan2(dy, dx);
+  context.moveTo(fromx, fromy);
+  context.lineTo(tox, toy);
+  context.lineTo(tox - headlen * Math.cos(angle - Math.PI / 5), toy - headlen * Math.sin(angle - Math.PI / 5));
+  context.moveTo(tox, toy);
+  context.lineTo(tox - headlen * Math.cos(angle + Math.PI / 5), toy - headlen * Math.sin(angle + Math.PI / 5));
+
+    context.lineCap = "round";
+   context.lineWidth = 5;
+ context.strokeStyle = '#6B8496';
+   context.stroke();
+}
+
+  </script>
+  
+<!--=======================================-->
+ <!-- Data base -->
+ <script type="text/javascript">
+   
+'use strict';
+
+function updateButtons(history) {
+  $('#undo').attr('disabled',!history.canUndo());
+
+}
+
+function setEditorContents(contents) {
+  $('#c').val(contents);
+}
+$(function(){
+  var history = new SimpleUndo({
+    maxLength: 200,
+    provider: function(done) {
+      done($('#c').val());
+    },
+    onUpdate: function() {
+      //onUpdate is called in constructor, making history undefined
+      if (!history) return; 
+      
+      updateButtons(history);
+    }
+  });
+  
+  $('#undo').click(function() {
+    history.undo(setEditorContents);
+  });
+  $('#c').keypress(function() {
+    history.save();
+  });
+  
+  updateButtons(history);
+});
+ </script>
+<!--=======================================================-->
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="bootstrap/js/bootstrap.min.js">
+    </script>
+
+
+  </body>
+</html>
